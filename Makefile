@@ -5,6 +5,7 @@ CFLAGS = -std=c++11 -Wall -Werror
 TEST = -D_TEST
 DEBUG = -g
 ECHO = @echo
+ID = 2208496
 
 lab8: main.cpp
 	$(CC) $(CFLAGS) $(NUMBER_OF_TESTS) $(COUNT) -o lab8 main.cpp
@@ -22,3 +23,10 @@ test: lab8 lab8-test
 .PHONY: clean
 clean:
 	rm -rf *.o lab8 lab8-test *.out
+
+.PHONY: tar
+tar:
+	@mkdir $(ID)_lab8
+	@cp main.cpp README.md Makefile $(ID)_lab8
+	@tar -cvzf $(ID)_lab8.tar.gz $(ID)_lab8
+	@rm -rf $(ID)_lab8
